@@ -6,10 +6,6 @@ from processing.chunking import create_chunks
 from processing.embedding import get_embeddings
 from retrieval.vector_store import create_faiss_index
 
-# ----------------------------------
-# Page Configuration
-# ----------------------------------
-
 st.set_page_config(
     page_title="AI Document Assistant",
     layout="wide"
@@ -60,16 +56,8 @@ if uploaded_files:
         for pdf in uploaded_files:
             st.write(f"• {pdf.name}")
 
-# ----------------------------------
-# Chat Memory
-# ----------------------------------
-
 if "chat_history" not in st.session_state:
     st.session_state.chat_history = []
-
-# ----------------------------------
-# Display Previous Messages
-# ----------------------------------
 
 for role, message in st.session_state.chat_history:
 
@@ -83,17 +71,9 @@ for role, message in st.session_state.chat_history:
         with st.chat_message("assistant"):
             st.write(message)
 
-# ----------------------------------
-# Chat Input
-# ----------------------------------
-
 user_input = st.chat_input(
     "Ask a question about your documents..."
 )
-
-# ----------------------------------
-# Ask Question
-# ----------------------------------
 
 if user_input:
 
