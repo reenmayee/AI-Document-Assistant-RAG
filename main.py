@@ -6,17 +6,7 @@ from llm.generator import generate_answer
 
 
 def build_rag_system():
-
-    with open("data.txt", "r", encoding="utf-8") as f:
-        text = f.read()
-
-    chunks = create_chunks(text)
-
-    embeddings = get_embeddings(chunks)
-
-    index = create_faiss_index(embeddings)
-
-    return chunks, index
+    return [], None
 
 
 def ask_question(query, chunks, index, chat_history):
