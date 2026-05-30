@@ -11,18 +11,18 @@ def build_rag_system():
 
 def ask_question(query, chunks, index, chat_history):
 
-    # ---------------------------
-    # Build Memory
-    # ---------------------------
-
     conversation = ""
 
     for role, message in chat_history[-10:]:
         conversation += f"{role}: {message}\n"
 
-    # ---------------------------
-    # Detect Summary Questions
-    # ---------------------------
+    if index is None or len(chunks) == 0:
+
+        return generate_answer(
+            query=query,
+            context="",
+            conversation=conversation
+        )
 
     summary_keywords = [
         "summary",
@@ -50,10 +50,6 @@ def ask_question(query, chunks, index, chat_history):
         )
 
         context = " ".join(results)
-
-    # ---------------------------
-    # Generate Response
-    # ---------------------------
 
     answer = generate_answer(
         query=query,
