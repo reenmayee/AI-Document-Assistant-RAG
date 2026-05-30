@@ -6,6 +6,8 @@ A Retrieval-Augmented Generation (RAG) application that enables users to upload 
 
 ## Demo
 
+**Live** - https://ai-document-assistant-rag.streamlit.app/
+
 ### Upload PDF
 
 ![Upload PDF](screenshots/upload_page.png)
