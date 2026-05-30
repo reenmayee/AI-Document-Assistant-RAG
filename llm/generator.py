@@ -1,27 +1,14 @@
-from dotenv import load_dotenv
-import os
-
-loaded = load_dotenv("GROQ_API_KEY.env")
-
-print("ENV Loaded:", loaded)
-print("File Exists:", os.path.exists("GROQ_API_KEY.env"))
-print("GROQ KEY:", os.getenv("GROQ_API_KEY"))
-
+import streamlit as st
 from openai import OpenAI
 
-# Load API key
+# Read API key from Streamlit Secrets
 
-load_dotenv("GROQ_API_KEY.env")
-
-api_key = os.getenv("GROQ_API_KEY")
-
-print("GROQ KEY FOUND:", api_key is not None)
+api_key = st.secrets["GROQ_API_KEY"]
 
 client = OpenAI(
     api_key=api_key,
     base_url="https://api.groq.com/openai/v1"
 )
-
 
 def generate_answer(query, context, conversation):
 
